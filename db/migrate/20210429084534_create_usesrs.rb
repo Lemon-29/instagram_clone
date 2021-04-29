@@ -1,0 +1,12 @@
+class CreateUsesrs < ActiveRecord::Migration[5.2]
+  def change
+    create_table :usesrs do |t|
+      t.string :name
+      t.string :email
+      t.text :image
+      t.string :password_digest
+
+      t.timestamps
+    end
+  end
+end
