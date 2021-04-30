@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  get 'favorites/index'
-  get 'sessions/new'
-  get 'pictures/index'
-  get 'pictures/show'
-  get 'pictures/edit'
-  get 'pictures/confirm'
-  get 'users/new'
-  get 'users/show'
-  get 'users/edit'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :favorites, only:[:index, :create, :destroy]
+  resources :uers, only:[:new, :create, :shouw, :edit]
+  resources :session, only:[:new, :create, :destroy]
+  resources :picture do
+    collection do
+      post: confirm
+  end
+ end 
 end
