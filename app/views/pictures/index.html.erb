@@ -1,2 +1,37 @@
-<h1>Pictures#index</h1>
-<p>Find me in app/views/pictures/index.html.erb</p>
+<div class=“users_h1_box’>“<h1>Check you’ve posts list”
+
+<table>
+ <thead>
+  <tr>
+   <th>Poster</th>
+   <th>Title</th>
+   <th>Text</th>
+   <th></th>
+   <th></th>
+   <th></th>
+   <th></th>
+   <th></th>
+ </tr>
+</thead>
+
+<body>
+  <% @picture.each do |picture_blog| %>
+      <tr>
+      <td><%= picture.user.na,e %></td>
+      <td><%= picture.title %></td>
+      <td><%= picture.content %></td>
+      <td><%= picture.image %></td>
+      <td><%= link_to “Details”, picture %></td>
+      <% if picture.user.id == current_user.id %>
+        <td><% link_to “Edit”, edit_picture_path(picture) %></td>
+        <td><% link_to “Delete”, picture, method: :delate, date: { confirm: “Are you sure you wanna delete it? ” }%></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </body>
+</table>
+
+<br>
+<br>
+<br>
+<%= link_to “Go to New post”, new_picture_path %>

@@ -1,38 +1,32 @@
-<div class="users_h1_box'>"<h1>Check you've posts list"
-
 <table>
- <thead>
+ <% if @favorites.empty? %>
+  <h2>There is no favorites</h2>
+ <% else $>
+  <h2>My favorites list</h2>
+  <tr>
   <tr>
    <th>Poster</th>
    <th>Title</th>
    <th>Text</th>
-   <th></th>
-   <th></th>
-   <th></th>
-   <th></th>
-   <th></th>
- </tr>
-</thead>
+   <th>Image</th>
+  </tr>
+<% end %>
 
-<body>
-  <% @picture.each do |picture_blog| %>
-      <tr>
-      <td><%= picture.user.na,e %></td>
-      <td><%= picture.title %></td>
-      <td><%= picture.content %></td>
-      <td><%= picture.image %></td>
-      <td><%= link_to "Details", picture %></td>
-      <% if picture.user.id == current_user.id %>
-        <td><% link_to "Edit", edit_picture_path(picture) %></td>
-        <td><% link_to "Delete", picture, method: :delate, date: { confirm: "Are you sure you wanna delete it? " }%></td>
-        <% end %>
-      </tr>
+  <% @favorites.each do |favorite| %>
+    <tr>
+      <% if favorite.user_id == current_user.id %>
+      <td><%= favorite.picture.user.name %></td>
+      <td><%= favorite.picture.title %></td>
+      <td><%= favorite.picture.content %></td>
+      <% if favorite.picture.image.url %>
+        <td><% = image_tag favorite.picture.image.url %></td>
+      <% end %>
     <% end %>
-  </body>
+    </tr>
+  <% end %>
 </table>
+  
 
-<br>
-<%= link_to "Go to New post", new_picture_path %>
 
 
 
