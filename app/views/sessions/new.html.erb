@@ -1,2 +1,14 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<div class= "users_h1_box"><h1>📷Instagram_Clone📷Let's get started🖤</h1></div>
+<div class= "Login"
+  <div class="login-triangle"></div>
+  <h2 class= "login-header"> Login</h2>
+  <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+    <form class="login-container">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.submit "Login" %>
+    </form>
+ <% end %>
+</div>
