@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
   
   def create
     favorite = current_user.favorites.create(picture_id: params[:picture_id])
-    redirect_to picture_blogs_path, notice: "Added #{favorite.picture.user.name}" 's picture to your favorite"
+    redirect_to picture_path, notice: "Added #{favorite.picture.user.name}" 's picture to your favorite"
   end
 
   def destroy

@@ -5,15 +5,15 @@ class PicturesController < ApplicationController
     if params[:back]
       @picture = Picture.new(picture_params)
     else
-      @picture = PictureBlog.new
+      @picture = Picture.new
     end
   end
 
    def create
-    @picture= PictureBlog.new(picture_params)
-    @picture.user_id = current_user.index
+    @picture= Picture.new(picture_params)
+    @picture.user_id = current_user.id
     if @picture.save
-      PictureMailer,picture_mail(@picture_blog).deliver
+      PictureMailer.picture_mail(@picture).deliver
       redirect_to picture_path, notice: "You've posted!"
     else
       render :new
@@ -29,7 +29,7 @@ class PicturesController < ApplicationController
   end
 
   def index
-    @pictre = PictureBlog.all
+    @pictre = Picture.all
   end
 
   def show
@@ -60,4 +60,5 @@ def set_picture
   @picture = Picture.find(params[:id])
 end
 
+end
 
