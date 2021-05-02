@@ -1,2 +1,11 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<%= form-for(@user) do |f| %>
+  <% if @user.image? %>
+   <%= image-tag @user.image.url %>
+  <% else %>
+   <%= image_tag "/assets/default.jpg" :size => "100x100" %>
+  <% end %>
+   <button type="button" class="btn btn-outline-secondary rounded-pill">
+     <%= f.file_field :image, accept: "image/jpeg/gif,image/png" </button>
+   </button>
+  <%= f.submit "Refresh", class: "btn-primary" %>
+<% end %>
