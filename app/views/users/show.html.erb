@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.name %>のページ</h1>
+<p>
+  profile picture:
+  <% if @user.image? %>
+    <%= image_tag @user.image.url %>
+  <% end %>
+</p>
+<p>EmailAddress: <%= @user.email %></p>
+<%= link_to 'Post', new_picture_path %>
+<br>
+<%= link_to 'Edit profile', edit_user_path(current_user.id)%>
+<br>
+<%= link_to 'Bookmark list', favorite_path(current_user.id)%>
+

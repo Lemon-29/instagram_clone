@@ -1,37 +1,34 @@
-<div class=“users_h1_box’>“<h1>Check you’ve posts list”
+<h1>Home</h1>
+<div class="picture_content">
 
 <table>
- <thead>
-  <tr>
-   <th>Poster</th>
-   <th>Title</th>
-   <th>Text</th>
-   <th></th>
-   <th></th>
-   <th></th>
-   <th></th>
-   <th></th>
- </tr>
-</thead>
+  <% @pictures.each do |picture| %>
+  <tbody>
+    <tr>
+    <td><%= picture.user.name %></td>
+    </tr>
+    <tr>
+    <td><%= picture.content %></td>
+    </tr>
+    <tr>
+    <td><%= image_tag(picture.image.to_s) %></td>
+    </tr>
+  </tbody>
 
-<body>
-  <% @picture.each do |picture| %>
-      <tr>
-      <td><%= picture.user.na,e %></td>
-      <td><%= picture.title %></td>
-      <td><%= picture.content %></td>
-      <td><%= picture.image %></td>
-      <td><%= link_to “Details”, picture %></td>
-      <% if picture.user.id == current_user.id %>
-        <td><% link_to “Edit”, edit_picture_path(picture) %></td>
-        <td><% link_to “Delete”, picture, method: :delate, date: { confirm: “Are you sure you wanna delete it? ” }%></td>
+  <tfooter>
+    <tr>
+      <td>
+        <%= link_to 'Show', picture %>
+        <% if picture.user.id == current_user.id %>
+        <%= link_to 'Edit', edit_picture_path(picture) %>
+        <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure? You wanna delete it?' } %>
         <% end %>
-      </tr>
-    <% end %>
-  </body>
+      </td>
+    </tr>
+  </tfooter>
 </table>
+</div>
 
-<br>
-<br>
-<br>
-<%= link_to “Go to New post”, new_picture_path %>
+<% end %>
+
+<%= link_to “Post”, new_picture_path %>

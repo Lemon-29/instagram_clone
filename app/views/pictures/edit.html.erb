@@ -1,5 +1,8 @@
-<div  class= "users_h1_box"><h1>Edit</h1></div>
- <%= render "form" %>
- <% link_to "Details", @picture %>
- <% link_to "Back", picture_path %>
+<h1>Edit Picture</h1>
+<%= render 'form', picture: @picture %>
+<div class="link_button1">
+  <%= link_to 'Show', @picture %> 
+  <br>
+  <%= link_to 'Back', pictures_path %>
+</div>
  

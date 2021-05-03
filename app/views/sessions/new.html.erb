@@ -1,14 +1,10 @@
-<div class= "users_h1_box"><h1>📷Instagram_Clone📷Let's get started🖤</h1></div>
-<div class= "Login"
-  <div class="login-triangle"></div>
-  <h2 class= "login-header"> Login</h2>
-  <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-    <form class="login-container">
+<h1>Login</h1>
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+  <div class="input_area">
     <%= f.label :email %>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, placeholder: "your email" %>
     <%= f.label :password %>
-    <%= f.password_field :password %>
-    <%= f.submit "Login" %>
-    </form>
- <% end %>
-</div>
+    <%= f.password_field :password, placeholder: "password" %>
+    <%= f.submit "Log in", class: 'button' %>
+  </div>
+<% end %>

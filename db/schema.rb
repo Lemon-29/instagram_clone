@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_04_29_084925) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email"
   end
 
   add_foreign_key "pictures", "users"

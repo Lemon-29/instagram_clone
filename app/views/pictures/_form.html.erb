@@ -1,28 +1,24 @@
-<% if @picture.errors.any? %>
-   <div id = "error_explanetion">
-    <h2><%= @picture.errors.count %> errors</h2>
-    <ul>
-    <% @picture.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-   </div>
-<% end %>
+<%= form_with(model: picture, local: true, url:choose_new_or_edit) do |form| %
+  <% if picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
 
-<%= form_with(model: @picture, local: true, url: choose_new_or_edit) do |f| %>
+      <ul>
+      <% picture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <div class = "field">
-    <% f.label "Title" %>
-    <% f.text_field :title %><br>
-    <% f.label "Text" %>
-    <% f.text_field :content %><br>
-    <% f.label "Image" %>
-    <% if @picture.image.url %>
-      <% image_tag(@picture.image.url) if @picture.image $$ @picture.image.url %>
-    <% end %>
-    <% f.file_field :image %>
-    <% f.hideen_field :image_cache %><br>
-    <%= f.submit "Post" %><br>
+  <div class="input_area">
+    <%= form.label :content %>
+    <%= form.text_area :content, placeholder: "What are you up to?" %>
+    <%= form.label :image %>
+    <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+    <br>
+    <%= form.submit 'create new post', class: 'button' %>
   </div>
 <% end %>
-

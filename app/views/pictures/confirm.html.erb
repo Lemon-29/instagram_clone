@@ -1,18 +1,15 @@
-<h1>"Preview"</h1>
- <%= form_with(model: @picture, url: picture_path, local: true) do |f| %>
-  <%= f.hidden_field :title %>
-  <p>Title : <picture.title %></p>
-  <%= f.hidden_field :content %>
-  <p>Text : <% @picture.content %></p>
-  <%= image_tag(@picture.image.url) if@picture.image $$ @picture.image.url %>
-  <%= f.hidden_field :image_cache %>
-  <%= f.submit "Post" %>
+<h1>Confirmation screen</h1>
+<br>
+<h3 id="message"> Post belows text</h3>
+<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+  <p>User: <%= @picture.user.name %></p>
+  <%= form.hidden_field :content %>
+  <p>Content: <%= @picture.content %></p>
+  <%= form.hidden_field :image_cache %>
+  <p>Image: <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></p>
+  <%= form.submit "Post" %>
 <% end %>
-
-<%= form_with(model:@picture, url:new_path, local:true, method:"get") do |f| %>
-  <%= f.hidden_field :title %>
-  <%= f.hidden_field :content %>
-  <%= f.hidden_fiedl :image_cache %>
-  <%= f.submit "Back", name:"back" %>
+<%= form_with(model:@picture, url:new_picture_path, local:true, method:"get") do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "Back", name: "back" %>
 <% end %>
-

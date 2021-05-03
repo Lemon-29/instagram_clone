@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
-
+ 
   def new
-    @usesr = User.new
+    @users = User.new
   end
 
+  def index
+    @user = User.all
+
   def create
-    @user = User.new(usesr_params)
+    @user = User.new(usesrs_params)
     if @user.save
-      session[:usesr_id] = @user.id
+      session[:users_id] = @user.id
       redirect_to user_path(@user.id), notice: "Created account!"
     else
       render :new
@@ -17,7 +20,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if @user.update_attributes(user_params)
       flash[:success] = "You've updated your profile!"
       redirect_to user_path(@user.id)
     else
@@ -37,7 +40,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image_cache)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
   end
 end
 

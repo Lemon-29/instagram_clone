@@ -1,3 +1,5 @@
-<div class = "users_h1_box"><h1>Post screen</h1></div>
-<%= render "form" %>
-<%= link_to "Back" %>, picure_path %>
+<h1>New Picture</h1>
+<%= render 'form', picture: @picture %>
+<div class="Link_button1">
+  <%= link_to 'Back', pictures_path %>
+</div>
