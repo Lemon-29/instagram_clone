@@ -1,6 +1,6 @@
 <h1>Confirmation screen</h1>
 <br>
-<h3 id="message"> Post belows text</h3>
+<h3 id="message"> Post as belows text</h3>
 <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
   <p>User: <%= @picture.user.name %></p>
   <%= form.hidden_field :content %>
