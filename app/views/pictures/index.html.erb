@@ -20,10 +20,10 @@
       <tfooter>
         <tr>
           <td>
-            <%= link_to 'Show', picture %>
+            <%= link_to 'Check a photo', picture %>
             <% if picture.user.id == current_user.id %>
               <%= link_to 'Edit', edit_picture_path(picture) %>
-              <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Deleta', picture, method: :delete, data: { confirm: 'Are you sure ?' } %>
             <% end %>
           </td>
         </tr>
