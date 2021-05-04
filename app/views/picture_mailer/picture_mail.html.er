@@ -1,5 +1,0 @@
-<h1>We've got your inqury</h1>
-<h4>name: <%= @picture.name %></h4>
-<h4>Check inqury</h4>
-<p>content: <%= @picture.content %></p>
-<p>image: <%= image_tag @picture.image.url %></p>
