@@ -25,7 +25,7 @@ class PicturesController < ApplicationController
     @picture = current_user.pictures.build(picture_params)
     if @picture.save
       ContactMailer.contact_mail(@picture).deliver
-      redirect_to @picture, notice: 'Picture page was successfully created.'
+      redirect_to pictures_path, notice: 'Picture page was successfully created.'
     else
       render :new
     end
